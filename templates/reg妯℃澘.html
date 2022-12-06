@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block head %}<title>Register</title>{% endblock %}
+        <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+        <h>Welcome to the registeration!</h>
+    </head>
+    <body>
+        {% if errorMessage %}
+            <p></p>{{errorMessage}}</p>
+        {% endif %}
+        {% block body %}<p>Pick your type</p>
+        <button onclick="window.location.href='/reg-cust';"> Customer </button>
+        <button onclick="window.location.href='/reg-ba';"> Booking agent </button>
+        <button onclick="window.location.href='/reg-as';"> Airline staff </button>
+        <button onclick="window.location.href='/';"> Go Back </button>
+        {% endblock %}
+        
+    </body>
+</html>

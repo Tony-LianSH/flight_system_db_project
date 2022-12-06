@@ -1,0 +1,61 @@
+{% extends 'home模板.html'%}
+{% block head %}
+<title>
+    All flight
+</title>
+{% endblock %}
+{% block body%}
+<p>
+    This is {{email}} history flight
+</p>
+    <button onclick="window.location.href='/logout';"> Log out </button>
+    {% if comingflight %}
+        <form action = '/bahistorysearch' method = 'POST'>
+            <select name = 'depart'> 
+                {% for i in deptwhere %}
+                    <option value = {{i}}>{{i}}</option>
+                {% endfor %}
+            </select>
+            <p>to</p>
+            <select name = 'arrival'>
+                {% for j in arrwhere %}
+                    <option value = {{j}}>{{j}}</option>
+                {% endfor %}
+            </select>
+            <input type="date" name = "date" value= 'date'>
+            <input type="submit" value = search! />
+        </form>
+        <p>This is your flights</p>
+        <table border="1">
+            <tr>
+              <td>airline name</td>
+              <td>flight number</td>
+              <td>ticket id</td>
+              <td>customer email</td>
+              <td>purchase date</td>
+              <td>dept from</td>
+              <td>dept time</td>
+              <td>arrive at</td>
+              <td>arrive time</td>
+              <td>price</td>
+              <td>status</td>
+            </tr>   
+            <tr>
+            {% for i in comingflight %}
+              <td>{{i[0]}}</td>
+              <td>{{i[1]}}</td>
+              <td>{{i[2]}}</td>
+              <td>{{i[3]}}</td>
+              <td>{{i[5]}}</td>
+              <td>{{i[6]}}</td>
+              <td>{{i[7]}}</td>
+              <td>{{i[8]}}</td>
+              <td>{{i[9]}}</td>
+              <td>{{i[10]}}</td>
+              <td>{{i[11]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+    <button onclick="window.location.href='/bahome';">home page</button>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'home模板.html'%}
+{% block head %}
+<title>
+    Home
+</title>
+{% endblock %}
+{% block body%}
+{% if username %}
+<p>
+    Greeting! staff {{username}}!
+</p>
+{% endif %}
+    {% if comingflight %}
+        <p>This is upcoming flights operated by your airline.</p>
+        <table border="1">
+            <tr>
+              <td>airline name</td>
+              <td>flight number</td>
+              <td>dept from</td>
+              <td>dept time</td>
+              <td>arrive at</td>
+              <td>arrive time</td>
+              <td>price</td>
+              <td>status</td>
+              <td>airplane id</td>
+            </tr>   
+            <tr>
+            {% for i in comingflight %}
+              <td>{{i[0]}}</td>
+              <td>{{i[1]}}</td>
+              <td>{{i[2]}}</td>
+              <td>{{i[3]}}</td>
+              <td>{{i[4]}}</td>
+              <td>{{i[5]}}</td>
+              <td>{{i[6]}}</td>
+              <td>{{i[7]}}</td>
+              <td>{{i[8]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+    <button onclick="window.location.href='/asallflight';">View all your flight</button>
+    <button onclick="window.location.href='/asflightchange';">Search a flight and change status</button>
+    <p></p>
+    <button onclick="window.location.href='/asaddflight';">Create a flight</button>
+    <button onclick="window.location.href='/asaddport';">Add an airport</button>
+    <button onclick="window.location.href='/asaddplane';">Add an airplane</button>   
+    <p></p>
+    <button onclick="window.location.href='/asba';">View Top 5 booking agent</button>  
+    <button onclick="window.location.href='/ascust';">View frequent customer and his/her trace</button>
+    <p></p>  
+    <button onclick="window.location.href='/asreport';">View report</button> 
+    <button onclick="window.location.href='/asrevcom';">Comparison of Revenue earned</button>  
+    <button onclick="window.location.href='/astopdes';">View Top 3 destinations</button>  
+    <p></p>
+    <button onclick="window.location.href='/logout';"> Log out </button>
+{% endblock %}

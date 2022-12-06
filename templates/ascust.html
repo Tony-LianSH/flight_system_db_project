@@ -1,0 +1,28 @@
+{% extends 'home模板.html'%}
+{% block head %}
+<title>
+    View customer and trace
+</title>
+{% endblock %}
+{% block body%}
+<p>
+    Choose the customer you want to check (ordered from the most frequent flyers to the least)
+</p>
+    <form action = '/ascusttrace' method = 'POST'>
+         <select name = 'cust'> 
+            {% for i in cust %}
+                <option value = {{i}}>{{i}}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value = View />
+    </form>
+    
+    {% if trace %}
+        <p>This is {{custn}}'s flying trace:</p>
+        {% for i in trace%}
+        <p>{{an}} {{i}}</p>
+        {% endfor %}
+    {% endif %}
+    <button onclick="window.location.href='/ashome';">home page</button>
+    <button onclick="window.location.href='/logout';"> Log out </button>
+{% endblock %}

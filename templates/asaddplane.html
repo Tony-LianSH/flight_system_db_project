@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block head %}
+<title>
+    Add plane
+</title>
+{% endblock %}
+{% block body %}
+<p>Please fill followed information for the new plane you want to add!</p>
+<form action = '/addairplane' method = 'POST'>
+    <li><a>Airplane ID:</a><input name="airplane_id" type="text" maxlength="50" required="required"></li>
+    <li><a>Max Seat Capacity:</a><input name="seats" type="number" maxlength="50" required="required"></li>
+    <input type="submit" value = Add />
+    <button onclick="window.location.href='/ashome';"> Go Back </button>
+</form>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block head %}
+<title>
+    Add airport
+</title>
+{% endblock %}
+{% block body %}
+<p>Please fill followed information for the airport you want to add!</p>
+<form action = '/addairport' method = 'POST'>
+    <li><a>Airport Name:</a><input name="airport_name" type="text" maxlength="50" required="required"></li>
+    <li><a>Airport City:</a><input name="airport_city" type="text" maxlength="50" required="required"></li>
+    <input type="submit" value = Add />
+    <button onclick="window.location.href='/ashome';"> Go Back </button>
+</form>
+{% endblock %}

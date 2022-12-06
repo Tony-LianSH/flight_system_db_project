@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            View top destinations
+        </title>
+        <meta charset="UTF-8" />
+        <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="http://code.highcharts.com/highcharts.js"></script>
+    </head>
+    <body>
+        <p>In last three months, Top 3 destinations are{% for i in threemon%}, {{i}}{% endfor %}</p>
+        <p>In the past year, Top 3 destinations are{% for i in year%}, {{i}}{% endfor %}</p>
+        
+    <button onclick="window.location.href='/ashome';">home page</button>
+    </body>
+</html>

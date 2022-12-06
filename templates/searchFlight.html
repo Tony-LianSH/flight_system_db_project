@@ -1,0 +1,32 @@
+{% extends 'base.html'%}
+{% block head %}
+    <title>Search Your Flight</title>
+{% endblock %}
+{% block body %}
+    {% if airportList %}
+        <p>I'm planning to take a flight from</p>
+        <form action = '/searchFlightFunc' method = 'POST'>
+            <select name = 'depart'> 
+                <!-- var i = 0; -->
+                {% for airport in airportList %}
+                    <option value = {{airport[0]}}>{{airport[1]}}, {{airport[0]}}</option>
+                    <!-- i = i+1; -->
+                {% endfor %}
+            </select>
+            <p>to</p>
+            <select name = 'arrival'>
+                <!-- var i = 0; -->
+                {% for airport in airportList %}
+                    <option value = {{airport[0]}}>{{airport[1]}}, {{airport[0]}}</option>
+                    <!-- i = i+1; -->
+                {% endfor %}
+            </select>
+            
+            <!-- <li><a>name:</a><input name="username" type="text" maxlength="50" required="required"></li> -->
+            <p></p>
+            <input type="submit" value = search! />
+        </form>
+        <!-- <button onclick="window.location.href='/';"> Feeling lucky! </button> -->
+    {% endif %}
+    <button onclick="window.location.href='/';"> Go Back </button>
+{% endblock %}

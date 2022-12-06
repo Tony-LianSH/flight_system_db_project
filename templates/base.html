@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block head %}<title>basetest</title>{% endblock %}
+        <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+    </head>
+    <body>
+        {% if errorMessage %}
+            <p></p>{{errorMessage}}</p>
+        {% endif %}
+        {% block body %}<p>{{greet}}</p>{% endblock %}
+    </body>
+</html>

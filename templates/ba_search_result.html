@@ -1,0 +1,39 @@
+{% extends 'home模板.html'%}
+{% block head %}
+<title>
+    Search results
+</title>
+{% endblock %}
+{% block body%}
+    <button onclick="window.location.href='/logout';"> Log out </button>
+    {% if not 'Find' in result %}
+        <p>This is your results</p>
+        {% for i in result%}
+        <table border="1">
+            <tr>
+              <td>airline name</td>
+              <td>flight number</td>
+              <td>ticket id</td>
+              <td>customer</td>
+              <td>ba id</td>
+              <td>purchase date</td>
+              <td>dept from</td>
+              <td>dept time</td>
+            </tr>   
+            <tr>
+              <td>{{i[0]}}</td>
+              <td>{{i[1]}}</td>
+              <td>{{i[2]}}</td>
+              <td>{{i[3]}}</td>
+              <td>{{i[4]}}</td>
+              <td>{{i[5]}}</td>
+              <td>{{i[6]}}</td>
+              <td>{{i[7]}}</td>
+            {% endfor %}
+        </table>
+    {% else %}
+    <p>{{result}}</p>
+    {% endif %}
+    <button onclick="window.location.href='/bahome';">home page</button>
+    <button onclick="window.location.href='/baflight';">back</button>
+{% endblock %}

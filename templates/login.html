@@ -1,0 +1,18 @@
+{% extends 'base.html'%}
+{% block head %}
+    <title>Login...</title>
+{% endblock %}
+{% block body %}
+    <p>Choose your user type</p>
+    <form action = '/loginpage' method = 'POST'>
+        <select name= 'usertype'>
+            <option value="customer">customer</option>
+            <option value="booking_agent">booking_agent</option>
+            <option value="airline_staff">airline_staff</option>
+        </select>
+        <input type="text" name = "email" placeholder="email or userid" required/> </br>
+	    <input type="password" name = "password" placeholder="password" required/></br>
+	    <input type="submit" value = Login />
+    </form>
+    <button onclick="window.location.href='/';"> Go Back </button>
+{% endblock %}

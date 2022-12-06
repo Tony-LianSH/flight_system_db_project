@@ -1,0 +1,63 @@
+{% extends 'home模板.html'%}
+{% block head %}
+<title>
+    All flight
+</title>
+{% endblock %}
+{% block body%}
+    {% if comingflight %}
+        <!-- <form action = '/custhistorysearch' method = 'POST'> 
+            <select name = 'depart'> 
+                {% for i in deptwhere %}
+                    <option value = {{i}}>{{i}}</option>
+                {% endfor %}
+            </select>
+            <p>to</p>
+            <select name = 'arrival'>
+                {% for j in arrwhere %}
+                    <option value = {{j}}>{{j}}</option>
+                {% endfor %}
+            </select>
+            <input type="date" name = "date" value= 'date'>
+            <input type="submit" value = search! />
+        </form>-->
+        <p>There are your airline's flights</p>
+        <table border="1">
+            <tr>
+              <td>airline name</td>
+              <td>flight number</td>
+              <td>dept from</td>
+              <td>dept time</td>
+              <td>arrive at</td>
+              <td>arrive time</td>
+              <td>price</td>
+              <td>status</td>
+              <td>airplane id</td>
+            </tr>   
+            <tr>
+            {% for i in comingflight %}
+              <td>{{i[0]}}</td>
+              <td>{{i[1]}}</td>
+              <td>{{i[2]}}</td>
+              <td>{{i[3]}}</td>
+              <td>{{i[4]}}</td>
+              <td>{{i[5]}}</td>
+              <td>{{i[6]}}</td>
+              <td>{{i[7]}}</td>
+              <td>{{i[8]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <form action = '/asflightdochange' method = 'POST'> 
+        <!-- <input type="text" name = 'airline_name' value = {{comingflight[0][0]}}/> -->
+        <input type="text" name = 'num' placeholder="The flight number you want to update status" style="width:200px" required />
+        <select name= 'status'>
+            <option value="Upcoming">Upcoming</option>
+            <option value="Delayed">Delayed</option>
+        </select>
+        <input type="submit" value = 'Save Changes' />
+        </form>
+    {% endif %}
+    <button onclick="window.location.href='/ashome';"> Go Back </button>
+    <button onclick="window.location.href='/logout';"> Log out </button>
+{% endblock %}

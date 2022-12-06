@@ -1,0 +1,34 @@
+{% extends 'base.html'%}
+{% block head %}
+    <title>Search Your Flight</title>
+{% endblock %}
+{% block body %}
+    {% if searchResult %}
+    <table border="1">
+        <tr>
+          <td>airline name</td>
+          <td>flight number</td>
+          <td>dept from</td>
+          <td>dept time</td>
+          <td>arrive at</td>
+          <td>arrive time</td>
+          <td>price</td>
+          <td>status</td>
+        </tr>   
+        <tr>{% for i in searchResult%}
+          <td>{{i[0]}}</td>
+          <td>{{i[1]}}</td>
+          <td>{{i[2]}}</td>
+          <td>{{i[3]}}</td>
+          <td>{{i[4]}}</td>
+          <td>{{i[5]}}</td>
+          <td>{{i[6]}}</td>
+          <td>{{i[7]}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>no match</p>
+    {% endif %}
+    <button onclick="window.location.href='/searchFlight';"> Go Back </button>
+{% endblock %}

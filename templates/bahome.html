@@ -1,0 +1,51 @@
+{% extends 'home模板.html'%}
+{% block head %}
+<title>
+    Home
+</title>
+{% endblock %}
+{% block body%}
+<p>
+    Greeting! Booking Agent {{email}}
+</p>
+    <button onclick="window.location.href='/logout';"> Log out </button>
+    {% if comingflight %}
+        <p>This is your upcoming flight</p>
+        <table border="1">
+            <tr>
+              <td>airline name</td>
+              <td>flight number</td>
+              <td>ticket id</td>
+              <td>customer email</td>
+              <td>purchase date</td>
+              <td>dept from</td>
+              <td>dept time</td>
+              <td>arrive at</td>
+              <td>arrive time</td>
+              <td>price</td>
+              <td>status</td>
+            </tr>   
+            <tr>
+            {% for i in comingflight %}
+              <td>{{i[0]}}</td>
+              <td>{{i[1]}}</td>
+              <td>{{i[2]}}</td>
+              <td>{{i[3]}}</td>
+              <td>{{i[5]}}</td>
+              <td>{{i[6]}}</td>
+              <td>{{i[7]}}</td>
+              <td>{{i[8]}}</td>
+              <td>{{i[9]}}</td>
+              <td>{{i[10]}}</td>
+              <td>{{i[11]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+    <button onclick="window.location.href='/baflight';">View all your flight</button>
+    <button onclick="window.location.href='/baallflightbuy';">Search a flight and you can buy a ticket</button>
+    <p></p>
+    <button onclick="window.location.href='/bacommission';">View your commission</button>
+    <button onclick="window.location.href='/bacust';">View Top Customer</button>
+    <!-- <button onclick="window.location.href='/custtrack';">Check your track</button> -->
+{% endblock %}

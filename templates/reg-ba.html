@@ -1,0 +1,12 @@
+{% extends "reg模板.html" %}
+{% block body %}
+<p>Agent register entry:</p>
+<form action = '/registerAuthBa' method = 'POST'>
+    <li><a>email:</a><input name="email" type="email" maxlength="50" required="required"></li>
+    <li><a>password:</a><input name="password" type="password" maxlength="30" required="required"></li>
+    <li><a>confirm password:</a><input name="confirm_pwd" type="password" maxlength="30" required="required"></li>
+    <li><a>id:</a><input name="booking_id" type="text" maxlength="50" required="required"></li>
+    <input type="submit" value = Register/>
+    <button onclick="window.location.href='/register';"> Go Back </button>
+</form>
+{% endblock %}

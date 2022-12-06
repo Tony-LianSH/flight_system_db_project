@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+{% block body %}
+<!-- {% with messages = get_flashed_messages() %}
+         {% if messages %}
+               {% for message in messages %}
+                    <p>{{ message }}</p>
+               {% endfor %}
+         {% endif %}
+    {% endwith %} -->
+     {% if username %}
+         <p>{{greet}}, {{ username }}!</p>
+         <button onclick="window.location.href='/logout';"> Log out </button>
+     {% endif %}
+     {% if not username %}
+         <p>{{greet}}!</p>
+         <button onclick="window.location.href='/login';"> Login </button>
+         <button onclick="window.location.href='/register';"> Register </button>
+     {% endif %}
+     <button onclick="window.location.href='/searchFlight';"> Search Your Flight </button>
+
+{% endblock %}

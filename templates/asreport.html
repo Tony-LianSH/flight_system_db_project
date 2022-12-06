@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            View the report
+        </title>
+        <meta charset="UTF-8" />
+        <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="http://code.highcharts.com/highcharts.js"></script>
+    </head>
+    <body>
+        <input type="month" id="start" name="start" value={{past}}>
+        <input type="month" id="end" name="end" value={{now}}>
+        <p id="lastyear"> In this period, your airline's sale amount is </p>
+        <!-- <p id="lastyear"></p> -->
+        <div id="container" style="width: 550px; height: 400px; margin: 0 auto"></div>
+        <script language="JavaScript">
+
+        var months = {{months}};
+        var spendings = {{spendings}};
+        var year_total = 0;
+        
+        // Year total
+        for (var i = Math.max(months.length - 12, 0); i < months.length; i++) {
+            year_total += spendings[i];
+        }
+        document.getElementById("lastyear").innerHTML += year_total+' dollars.';
+        
+        // Total of the select range
+        chart = draw();
+
+        document.getElementById("start").oninput = function(){draw();};
+        document.getElementById("end").oninput = function(){draw();};
+
+        function draw(){
+            let select_total = 0;
+            let start = document.getElementById("start").value;
+            let end = document.getElementById("end").value;
+            let y, m;
+            let select_months = [];
+            let select_spendings = [];
+
+            try{start_year = +start.slice(0,4);
+            start_month = +start.slice(5,7);
+            end_year = +end.slice(0,4);
+            end_month = +end.slice(5,7);
+
+            if (start_year*100+start_month>end_year*100+end_month){
+                throw "error";
+            }
+
+            y = start_year;
+            m = start_month;
+            
+            while (y*100+m <= end_year*100+end_month){
+                select_months.push(y+"-"+m);
+                select_spendings.push(0);
+                for (var i = 0; i < months.length; i++) {
+                    if (months[i] === y*100+m){
+                        select_spendings[select_spendings.length-1] = spendings[i];
+                        select_total += spendings[i];
+                    }
+                }
+                m += 1;
+                if (m==13){
+                    m = 1;
+                    y += 1;
+                }
+            }
+
+            var options = {
+                chart: {
+                    type: 'bar'                          //指定图表的类型，默认是折线图（line）
+                },
+                title: {
+                    text: 'Selling Amount'                 // 标题
+                },
+                xAxis: {
+                    categories: select_months   // x 轴分类
+                },
+                yAxis: {
+                    title: {
+                        text: 'Amount'                // y 轴标题
+                    }
+                },
+                series: [{                              // 数据列
+                    name: 'Sale (Both direct sale and indirect sale included)',                        // 数据列名
+                    data: select_spendings                    // 数据
+                }]
+                };
+                // 图表初始化函数
+                var chart = Highcharts.chart('container', options);
+                }
+        catch{
+            //document.getElementById("error").innerHTML = "Error. Please check your input.";
+        }
+    } 
+
+
+        </script>
+        
+    <button onclick="window.location.href='/ashome';">home page</button>
+    </body>
+</html>

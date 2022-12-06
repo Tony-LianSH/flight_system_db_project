@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block head %}{% endblock %}
+        <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+        <h>Welcome!</h>
+    </head>
+    <body>
+        <p>Dear {{email}} </p>
+        <button onclick="window.location.href='/logout';"> Log out </button>
+    </body>
+</html>

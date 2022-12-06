@@ -1,0 +1,21 @@
+{% extends "reg模板.html" %}
+{% block body %}
+<p>Staff register entry:</p>
+<form action = '/registerAuthAs' method = 'POST'>
+    <li><a>username:</a><input name="username" type="text" maxlength="50" required="required"></li>
+    <li><a>password:</a><input name="password" type="password" maxlength="30" required="required"></li>
+    <li><a>confirm password:</a><input name="confirm_pwd" type="password" maxlength="30" required="required"></li>
+    <li><a>first name:</a><input name="first_name" type="text" maxlength="50" required="required"></li>
+    <li><a>last name:</a><input name="last_name" type="text" maxlength="50" required="required"></li>
+    <li><a>Date of Birth:</a><input name="date_of_birth" type="date" maxlength="50" required="required"></li>
+    <li><a>Airline Name:</a>
+        <select name = "airline_name">
+            {% for i in airlines %}
+            <option>{{i}}</option>
+            {% endfor %}
+        </select>
+    </li>
+    <input type="submit" value = Register/>
+    <button onclick="window.location.href='/register';"> Go Back </button>
+</form>
+{% endblock %}

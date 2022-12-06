@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block head %}
+<title>
+    Add flight
+</title>
+{% endblock %}
+{% block body %}
+<p>Please fill followed information for the flight you want to create!</p>
+<form action = '/addflight' method = 'POST'>
+    <li><a>Flight Number:</a><input name="flight_num" type="text" maxlength="50" required="required"></li>
+    <li><a>Departure Airport:</a>
+    <select name = "departure_airport">
+            {% for i in airports %}
+            <option>{{i}}</option>
+            {% endfor %}
+        </select>
+    </li>
+    <li><a>Departure Time:</a><input name="departure_time" type="datetime-local" maxlength="30" required="required"></li>
+    <li><a>Arrival Airport:</a>
+        <select name = "arrival_airport">
+                {% for i in airports %}
+                <option>{{i}}</option>
+                {% endfor %}
+            </select>
+        </li>
+    <li><a>Arrival Time:</a><input name="arrival_time" type="datetime-local" maxlength="30" required="required"></li>
+    <li><a>Price:</a><input name="price" type="number" maxlength="50" required="required"></li>
+    <li><a>Status:</a><select name= 'status'>
+        <option value="Upcoming">Upcoming</option>
+        <option value="Delayed">Delayed</option>
+    </select></li>
+    <li><a>Airplane ID:</a>
+        <select name = "airplane_id">
+                {% for i in airplanes %}
+                <option>{{i}}</option>
+                {% endfor %}
+            </select>
+        </li>
+    <input type="submit" value = Create />
+    <button onclick="window.location.href='/ashome';"> Go Back </button>
+</form>
+{% endblock %}

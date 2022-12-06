@@ -1,0 +1,21 @@
+{% extends "reg模板.html" %}
+{% block body %}
+<p>Customer register entry:</p>
+<form action = '/registerAuthCu' method = 'POST'>
+    <li><a>name:</a><input name="username" type="text" maxlength="50" required="required"></li>
+    <li><a>email:</a><input name="email" type="email" maxlength="50" required="required"></li>
+    <li><a>password:</a><input name="password" type="password" maxlength="30" required="required"></li>
+    <li><a>confirm password:</a><input name="confirm_pwd" type="password" maxlength="30" required="required"></li>
+    <li><a>state:</a><input name="state" type="text" maxlength="30" required="required"></li>
+    <li><a>city:</a><input name="city" type="text" maxlength="50" required="required"></li>
+    <li><a>street:</a><input name="street" type="text" maxlength="50" required="required"></li>
+    <li><a>building number:</a><input name="building_number" type="text" maxlength="30" required="required"></li>
+    <li><a>phone number:</a><input name="phone_number" type="number" min = "0" max = "99999999999" required="required"></li>
+    <li><a>passport No.:</a><input name="passport_number" type="text" maxlength="50" required="required"></li>
+    <li><a>passport expiration date:</a><input name="passport_expiration" type="date" maxlength="50" required="required"></li>
+    <li><a>Issue Country:</a><input name="passport_country" type="text" maxlength="50" required="required"></li>
+    <li><a>Birth Date:</a><input name="date_of_birth" type="date" maxlength="50" required="required"></li>
+    <input type="submit" value = Register />
+    </form>
+    <button onclick="window.location.href='/register';"> Go Back </button>
+{% endblock %}
